@@ -1,8 +1,8 @@
-/*  
 .testing {
-  width: 71.42857%; 
-} 
-//a comment
-body{
-    background: red;
-} */
+  width: 71.42857%; }
+
+body {
+  background: red; }
+
+header {
+  font-size: 40px; }
