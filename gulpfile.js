@@ -5,9 +5,9 @@ var sass = require('gulp-sass');
 
 //SASS
 gulp.task('sass', function(){
-    return gulp.src('app/scss/.scss')
-    .pipe(sass())
-    .pipe(gulp.dest('app/css'))
+    return gulp.src('app/scss/styles.scss')
+        .pipe(sass())
+        .pipe(gulp.dest('app/css'))
    /*  .pipe(browserSync.reload({
         stream: true
     })) */
