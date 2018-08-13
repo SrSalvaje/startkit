@@ -5,8 +5,8 @@ var browserSync = require('browser-sync').create();
 
 gulp.task('sass', function(done) {
   gulp.watch('app/scss/**/*.scss', browserSync.reload());
-  gulp.watch('app/*.html', browserSync.reload());
-  gulp.watch('app/js/**/*.js', browserSync.reload());  
+  //gulp.watch('app/*.html', browserSync.reload());
+  //gulp.watch('app/js/**/*.js', browserSync.reload());  
 
 	gulp.src('app/scss/**/*.scss')
 		.pipe(sass().on('error', sass.logError))
@@ -17,18 +17,29 @@ gulp.task('sass', function(done) {
     done();
 });
 
+
+
 gulp.task('watch:scss', function(){
  gulp.watch('app/scss/**/*.scss', gulp.series('sass')); 
 })
 
 gulp.task('watch:html', function(){
-  gulp.watch('app/*.html', gulp.series('sass')) 
+  gulp.watch('app/*.html', gulp.series('htmlw')); 
+})
+gulp.task('htmlw', function(done){
+  gulp.watch('app/*.html', browserSync.reload());
+  done();
 })
 
-gulp.task('watch:js', function(){
-  gulp.watch('app/js/**/*.js', gulp.series('sass')); 
+
+gulp.task('watch:js', function(done){
+  gulp.watch('app/js/**/*.js', gulp.series('jsw'));
+  done(); 
 })
 
+gulp.task('jsw', function(){
+  gulp.watch('app/js/**/*.js', browserSync.reload());
+})
 
 
 gulp.task('watch', gulp.parallel('watch:scss', 'watch:html', 'watch:js'));
