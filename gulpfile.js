@@ -32,13 +32,14 @@ gulp.task('htmlw', function(done){
 })
 
 
-gulp.task('watch:js', function(done){
+gulp.task('watch:js', function(){
   gulp.watch('app/js/**/*.js', gulp.series('jsw'));
-  done(); 
+  
 })
 
-gulp.task('jsw', function(){
+gulp.task('jsw', function(done){
   gulp.watch('app/js/**/*.js', browserSync.reload());
+  done(); 
 })
 
 
